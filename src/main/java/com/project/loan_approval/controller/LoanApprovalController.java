@@ -28,6 +28,13 @@ public class LoanApprovalController {
     @PostMapping("/add")
     public ResponseEntity<LoanApprovalEntity> addApproval(@RequestBody LoanApprovalEntity loanApproval  ){
     	
+    	loanApproval.setInstallationAmount(loanApprovalService.calculateMonthlyLoanAmount(
+    											loanApproval.getApprovalAmount(),
+    											loanApproval.getLoanTenure(),
+    											loanApproval.getInterestRate()
+    											));
+    	loanApproval.setStatus("Approved");
+    	loanApproval.setDueDate(loanApprovalService.calculateDueDates(0));
     	return new ResponseEntity<LoanApprovalEntity>(loanApprovalService.addLoanApproval(loanApproval) , HttpStatus.OK);
     }
     
