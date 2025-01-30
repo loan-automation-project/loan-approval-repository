@@ -34,7 +34,7 @@ public class LoanApprovalController {
     											loanApproval.getInterestRate()
     											));
     	loanApproval.setStatus("Approved");
-    	loanApproval.setDueDate(loanApprovalService.calculateDueDates(0));
+    	loanApproval.setDueDate(loanApprovalService.calculateDueDates(loanApproval.getLoanTenure()));
     	return new ResponseEntity<LoanApprovalEntity>(loanApprovalService.addLoanApproval(loanApproval) , HttpStatus.OK);
     }
     
