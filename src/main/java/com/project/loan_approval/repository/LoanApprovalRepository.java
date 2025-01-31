@@ -7,5 +7,7 @@ import com.project.loan_approval.entity.LoanApprovalEntity;
 
 @Repository
 public interface LoanApprovalRepository extends JpaRepository<LoanApprovalEntity, Long> {
+	
+	LoanApprovalEntity findFirstByOrderByLoanApprovalIdDesc();
 }
 
